@@ -5,7 +5,7 @@ $("#submit-button").on("click", function(event){
 
     $.ajax({
         method:"GET",
-        url: "https://pokemontcg.io/cards?name="+pokemon
+        url: "https://cors-anywhere.herokuapp.com/https://api.pokemontcg.io/v1/cards?name="+pokemon
     }).then(function(response){
         for (var i = 0; i<response.cards.length; i++){
             var pokemonCard = $("<img>");
@@ -14,3 +14,5 @@ $("#submit-button").on("click", function(event){
         }
     });
 });
+
+//tutorial https://www.youtube.com/watch?v=5zcSpVKxMao&t=1344s
