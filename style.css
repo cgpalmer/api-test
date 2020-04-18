@@ -1,3 +1,27 @@
+/* body{
+    background-color: black;
+} */
+
+.display{
+    display: none;
+}
+#testDivCover{
+    background-image: url("backgroundimage.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 200px;
+    width: 150px;
+}
+
+#testDiv{
+ 
+    background-image: url("https://images.pokemontcg.io/xy0/19_hires.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 200px;
+    width: 150px;
+}
+
 .img-card{
     height:150px;
     
