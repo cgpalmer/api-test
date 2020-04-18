@@ -1,10 +1,11 @@
 var test = ["test"];
 
+
 $("#submit-button").on("click", function(event){
     event.preventDefault();
 
         
-        for (i = 0; i < 8; i++){
+        for (i = 0; i < 24; i++){
         var pokemonID = Math.floor((Math.random() * 818)+1); 
         $.ajax({
                 method:"GET",                
@@ -20,42 +21,67 @@ $("#submit-button").on("click", function(event){
                     test.push(response.cards[Math.floor((Math.random() * n))].imageUrlHiRes);      //YOU NEED TO MAKE THIS RANDOM                    
                              
 				}   
-				if(test.length == 9){
-					console.log("Array is finished");
+				// if(test.length == 3){
+				// 	console.log("Array is finished");
 					
-				}                            
+				// }                            
             });
     
         }
         console.log(test);
-        // var time = setInterval(frame, 1000);
-        var time2 = setInterval(frame2, 1000);
-         var format = "Loading pokemon!";
-        alert(format);
-        function frame2(){
-        if(test.length < 9){
-           
-            //Change this to template literates
-            alert("We need a tiny bit more time!");
-        }
-        else{
-            clearInterval(time2);
-        for (var j = 1; j<9; j++){ //then change this is an array can be declared empty.
-        var pokemonCard = $("<img class='img-card'>");
-        pokemonCard.attr("src", test[j]);
-        $("#card-container").append(pokemonCard);
-        }
-        
-    } 
-        }
-		
-		
-		// 
+
+        //Change these names to meaningful names
+        // var time2 = setInterval(frame2, 1000);
+   
+           $("#loading").html(
+                `<div>
+                    <h2>We are carefully picking your pokemon!</h2>
+                </div>`
+            )
+            //fix this global variable
+            time = setInterval(frame, 1000);
+            function frame(){
+                if(test.length < 9){
+                    $("#buttonContainer").html("Loading!!!");
+                }else{
+                
+              
+                $("#buttonContainer").html(
+                    `<button onclick="play()">Enter</button>`
+                );
+                }
+            }
+
+
+
+
+
+// 		// 
  
-//pair1 will always be test[1]
-//pair2 wil always be test[2]
-//Doesn't matter because the pokemon going in are random.
+// //pair1 will always be test[1]
+// //pair2 wil always be test[2]
+// //Doesn't matter because the pokemon going in are random.
         });
+        
+        function play(){
+            $("#play").css("display", "block");
+        }
+
+        $("#play").click(function(){
+            for (var j = 1; j<9; j++){ //then change this is an array can be declared empty.
+                var pokemonCard = $(`<img id='image${[j]}' class='img-card'>`);
+                pokemonCard.attr("src", test[j]);
+                $("#card-container").append(pokemonCard);
+                }
+            $("#card-container").css("display","block");
+            $("#loading").css("display", "none");
+            $("#buttonContainer").css("display", "none");
+            clearInterval(time);
+        });
+
+
+
+
 //find out if an array has to be declared with a value.
     //    $("#play").click(function(event){
     //     var time = setInterval(frame, 1000);
@@ -127,4 +153,4 @@ $("#submit-button").on("click", function(event){
 // //             $("#card-container").append(pokemonCard);
 // //         }
 // //     });
-// // });
+// });

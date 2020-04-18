@@ -2,3 +2,23 @@
     height:150px;
     
 }
+
+#play{
+    display:none;
+}
+
+.continueButton{
+    background-color: transparent;
+    border: none;
+    animation: showButton 5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    color: white;
+}
+
+@keyframes showButton
+    {
+      0%   {background-color: transparent;}
+      50% {background-color: transparent;}
+      100% {background-color: black}
+    }
